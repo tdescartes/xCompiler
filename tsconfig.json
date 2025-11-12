@@ -1,9 +1,23 @@
 {
   "compilerOptions": {
     "target": "ES2017",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
     "rootDir": "src",
     "outDir": "dist/",
     "sourceMap": true,
-    "extendedDiagnostics": true
-  }
+    "extendedDiagnostics": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
