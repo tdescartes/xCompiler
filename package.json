@@ -1,0 +1,15 @@
+{
+  "name": "xcompiler",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TypeScript Compiler Project",
+  "main": "dist/Compiler.js",
+  "scripts": {
+    "build": "tsc",
+    "compile": "node dist/Compiler.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.130",
+    "typescript": "^5.0.0"
+  }
+}

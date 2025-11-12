@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compiler</title>
     <script src="dist/Compiler.js"></script>
     <script src="dist/Lexer.js"></script>
-  </head>
-  <body>
-    <input type="button" value="Compile" onclick="beginCompilation();" />
-  </body>
+</head>
+<body>
+    <h1>TypeScript Compiler</h1>
+    <div>
+        <label for="sourceCode">Source Code:</label>
+        <textarea id="sourceCode" rows="10" cols="50" placeholder="Enter your source code here..."></textarea>
+    </div>
+    <div>
+        <input type="button" value="Compile" onclick="beginCompilation();">
+    </div>
+    <div>
+        <h2>Output:</h2>
+        <pre id="output"></pre>
+    </div>
+</body>
 
-  <script>
+<script>
     function beginCompilation() {
-      myCompiler = new Compiler();
-      myCompiler.execute();
+        const sourceCode = document.getElementById('sourceCode').value;
+        const outputElement = document.getElementById('output');
+        
+        try {
+            const myCompiler = new Compiler();
+            const result = myCompiler.compile(sourceCode);
+            outputElement.textContent = result;
+        } catch (error) {
+            outputElement.textContent = `Error: ${error.message}`;
+        }
     }
-  </script>
+</script>
 </html>
