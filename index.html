@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compiler</title>
+    <script src = "dist/Compiler.js"></script>
+    <script src = "dist/Lexer.js"></script>
+</head>
+<body>
+	<input type="button" value = "Compile" onclick="beginCompilation();">
+</body>
+
+<script>
+	function beginCompilation() {
+		myCompiler = new Compiler();
+		myCompiler.execute();
+	}
+</script>
+</html>
