@@ -1,0 +1,7 @@
+{
+    /* Test valid identifier operations */
+    int a
+    a = 0
+    int b
+    b = 1 + a
+}$

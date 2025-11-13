@@ -1,0 +1,5 @@
+{
+    /* Invalid: String with uppercase letters */
+    string s
+    s = "Hello World"
+}$

@@ -1,0 +1,5 @@
+{
+    /* Warning: Missing EOP marker */
+    int a
+    a = 5
+}

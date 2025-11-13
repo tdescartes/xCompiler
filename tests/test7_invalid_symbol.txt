@@ -1,0 +1,5 @@
+{
+    /* Invalid: Unrecognized symbol @ */
+    int a
+    a = 5 @ 3
+}$

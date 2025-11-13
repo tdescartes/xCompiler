@@ -1,0 +1,6 @@
+{
+    /* Test string declarations */
+    string s
+    s = "hello world"
+    print(s)
+}$

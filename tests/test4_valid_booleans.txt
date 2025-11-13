@@ -1,0 +1,8 @@
+{
+    /* Test boolean expressions */
+    boolean b
+    b = true
+    if (b == false) {
+        print("not equal")
+    }
+}$

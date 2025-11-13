@@ -1,0 +1,5 @@
+{
+    /* Invalid: Multi-character identifier */
+    int abc
+    abc = 5
+}$

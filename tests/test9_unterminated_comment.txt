@@ -1,0 +1,6 @@
+{
+    /* Warning: Unterminated comment */
+    int a
+    /* This comment never ends
+    a = 5
+}$
