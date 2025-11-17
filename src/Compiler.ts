@@ -31,7 +31,7 @@ class Compiler {
         try {
             // Read the source code from the file
             const sourceCode: string = fs.readFileSync(fileName, 'utf-8');
-            console.log(`INFO: Reading source code from ${fileName}`);
+            console.log(`INFO: Test cases from file ${fileName}`);
             console.log("=".repeat(60));
 
             // Initialize the lexer and tokenize the source code
