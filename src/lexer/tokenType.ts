@@ -11,14 +11,14 @@ export enum TokenType {
     // ========== KEYWORDS ==========
     // Reserved words that have special meaning in our language
 
-    PRINT = "PRINT",        // print statement: print(x)
-    WHILE = "WHILE",        // while loop: while (condition) { }
-    IF = "IF",              // if statement: if (condition) { }
-    INT = "INT",            // integer type declaration: int x
-    STRING = "STRING",      // string type declaration: string s
-    BOOLEAN = "BOOLEAN",    // boolean type declaration: boolean b
-    TRUE = "TRUE",          // boolean literal: true
-    FALSE = "FALSE",        // boolean literal: false
+    PRINT = "print",        // print statement: print(x)
+    WHILE = "while",        // while loop: while (condition) { }
+    IF = "if",              // if statement: if (condition) { }
+    INT = "int",            // integer type declaration: int x
+    STRING = "string",      // string type declaration: string s
+    BOOLEAN = "boolean",    // boolean type declaration: boolean b
+    TRUE = "true",          // boolean literal: true
+    FALSE = "false",        // boolean literal: false
 
     // ========== SYMBOLS ==========
     // Special characters that structure the program
@@ -46,7 +46,7 @@ export enum TokenType {
     DIGIT = "DIGIT",    // Single digit (0-9)
     // Numbers are built from individual digits
 
-    CHAR = "CHAR",      // Single lowercase letter inside strings
+    CHAR = "char",      // Single lowercase letter inside strings
     // Not used as a separate token, part of string processing
 
     SPACE = "SPACE",    // Space character (only valid inside strings)
@@ -61,3 +61,11 @@ export enum TokenType {
     EOF = "EOF"         // End of File (not used in current implementation)
     // Could be used to detect when source code runs out
 }
+function getKeyByValue(tokenType: typeof TokenType, value: string): void {
+     console.log(typeof(Object.keys(tokenType).find(key => tokenType[key as keyof typeof TokenType] === value)));
+ }
+
+// function getValueByKey(tokenType: typeof TokenType, key: string): void {
+//     console.log(tokenType[key as keyof typeof TokenType]);
+// }
+getKeyByValue(TokenType, "int");
