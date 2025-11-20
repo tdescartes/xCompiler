@@ -1,39 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compiler</title>
-    <script src="dist/Compiler.js"></script>
-    <script src="dist/Lexer.js"></script>
-</head>
-<body>
-    <h1>TypeScript Compiler</h1>
-    <div>
-        <label for="sourceCode">Source Code:</label>
-        <textarea id="sourceCode" rows="10" cols="50" placeholder="Enter your source code here..."></textarea>
-    </div>
-    <div>
-        <input type="button" value="Compile" onclick="beginCompilation();">
-    </div>
-    <div>
-        <h2>Output:</h2>
-        <pre id="output"></pre>
-    </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>xCompiler - Lexer Project</title>
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+      }
+      textarea {
+        width: 100%;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      button:active {
+        background-color: #3d8b40;
+      }
+      #output {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 15px;
+        border-radius: 4px;
+        max-height: 500px;
+        overflow-y: auto;
+        font-size: 13px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      #output:empty::before {
+        content: "Output will appear here...";
+        color: #888;
+      }
+      .error-text {
+        color: #f44336;
+      }
+      .info-text {
+        color: #2196f3;
+      }
+      .debug-text {
+        color: #9e9e9e;
+      }
+      .warn-text {
+        color: #ff9800;
+      }
+    </style>
+    <script type="module" src="dist/Compiler.js"></script>
+  </head>
+  <body>
+    <h1>🔧 xCompiler - Lexical Analyzer</h1>
 
-<script>
-    function beginCompilation() {
-        const sourceCode = document.getElementById('sourceCode').value;
-        const outputElement = document.getElementById('output');
-        
+    <div class="container">
+      <label for="sourceCode">Source Code:</label>
+      <textarea
+        id="sourceCode"
+        rows="15"
+        cols="50"
+        placeholder="Enter your source code here...
+
+Example:
+{
+int x
+x = 5
+print(x)
+}$"
+      ></textarea>
+      <button onclick="beginCompilation()">▶️ Compile</button>
+      <button
+        onclick="clearOutput()"
+        style="background-color: #f44336; margin-left: 10px"
+      >
+        🗑️ Clear
+      </button>
+    </div>
+
+    <div class="container">
+      <h2>📋 Output:</h2>
+      <pre id="output"></pre>
+    </div>
+
+    <script type="module">
+      import { Compiler } from "./dist/Compiler.js";
+      import { Logger } from "./dist/utils/logger.js";
+
+      // Make functions available globally
+      window.beginCompilation = function () {
+        const sourceCode = document.getElementById("sourceCode").value;
+        const outputElement = document.getElementById("output");
+
+        // Set the output element for the logger
+        Logger.setOutputElement(outputElement);
+
+        // Clear previous output
+        Logger.clearOutput();
+
         try {
-            const myCompiler = new Compiler();
-            const result = myCompiler.compile(sourceCode);
-            outputElement.textContent = result;
+          const compiler = new Compiler();
+          compiler.execute(sourceCode);
         } catch (error) {
-            outputElement.textContent = `Error: ${error.message}`;
+          outputElement.textContent += `\n\nFATAL ERROR: ${error.message}`;
         }
-    }
-</script>
+      };
+
+      window.clearOutput = function () {
+        const outputElement = document.getElementById("output");
+        const sourceCode = document.getElementById("sourceCode");
+
+        Logger.clearOutput();
+        sourceCode.value = "";
+      };
+    </script>
+  </body>
 </html>
